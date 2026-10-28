@@ -1,0 +1,56 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Public datasets downloaded locally and derived data
+data/raw/
+data/interim/
+data/processed/
+data/external/
+!data/.gitkeep
+!data/raw/.gitkeep
+!data/interim/.gitkeep
+!data/processed/.gitkeep
+!data/external/.gitkeep
+
+# Python environments, caches, test and notebook outputs
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
+
+# Models, experiment tracking and generated reports
+artifacts/
+models/
+mlruns/
+reports/generated/
+*.joblib
+*.pkl
+*.pickle
+
+# Local databases and logs
+*.sqlite
+*.sqlite3
+*.db
+*.log
+postgres-data/
+
+# Editor and operating-system files
+.vscode/settings.json
+.vscode/launch.json
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

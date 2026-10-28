@@ -1,0 +1,17 @@
+flowchart TD
+  HC[Home Credit real - após validação] --> A[Adaptador Home Credit]
+  SY[Gerador sintético - seed e versão] --> B[Adaptador sintético]
+  UCI[UCI opcional isolado] -. benchmark separado .-> C[Adaptador UCI]
+  A --> D[Staging source-specific]
+  B --> D
+  C --> D
+  D --> E{Manifesto e qualidade OK?}
+  E -->|não| Q[Quarentena e investigação]
+  E -->|sim| F[Camada canônica com proveniência]
+  F --> G[SQL marts e features as-of]
+  G --> H[Definição de target e maturação]
+  H --> I[Split temporal e baselines]
+  I --> J[Modelo P0]
+  J --> K[Registro versionado e métricas]
+  K --> L[Explicabilidade P1]
+  K --> M[Monitoramento offline P1]

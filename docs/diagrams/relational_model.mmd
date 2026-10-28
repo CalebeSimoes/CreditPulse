@@ -1,0 +1,51 @@
+erDiagram
+  SOURCE ||--o{ BATCH : produces
+  BATCH ||--o{ RAW_RECORD : loads
+  SOURCE ||--o{ CANONICAL_OBSERVATION : maps
+  CANONICAL_OBSERVATION ||--o{ FEATURE_SNAPSHOT : derives
+  MODEL_RUN ||--o{ PREDICTION : produces
+  CANONICAL_OBSERVATION ||--o{ PREDICTION : scores
+  SOURCE {
+    text source_name PK
+    text source_version
+    text terms_reference
+  }
+  BATCH {
+    uuid batch_id PK
+    text dataset_version
+    text content_hash
+    integer row_count
+    timestamptz loaded_at
+  }
+  RAW_RECORD {
+    uuid batch_id FK
+    text source_record_key
+    jsonb payload
+  }
+  CANONICAL_OBSERVATION {
+    text source_name FK
+    text source_record_key PK
+    text entity_type
+    date observation_date
+    smallint target
+    boolean is_synthetic
+  }
+  FEATURE_SNAPSHOT {
+    text source_name FK
+    text source_record_key FK
+    text feature_version
+    jsonb features
+  }
+  MODEL_RUN {
+    uuid model_run_id PK
+    text dataset_version
+    text feature_version
+    jsonb metrics
+  }
+  PREDICTION {
+    uuid model_run_id FK
+    text source_name FK
+    text source_record_key FK
+    numeric probability
+    jsonb explanation
+  }

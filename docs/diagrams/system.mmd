@@ -1,0 +1,13 @@
+flowchart LR
+  HC[Home Credit real candidato] --> PY[Ingestão e adaptadores Python]
+  SG[Gerador sintético] --> PY
+  U[UCI opcional] -. caminho isolado .-> PY
+  PY --> ST[(Staging por fonte / PostgreSQL)]
+  ST --> SQL[SQL: qualidade, canonical, marts]
+  SQL --> F[(Features e target versionados)]
+  F --> EV[EDA e validação temporal]
+  EV --> SK[scikit-learn baseline e modelo]
+  SK --> REG[(Registro de runs offline)]
+  REG --> EX[Explicabilidade P1]
+  REG --> MON[Monitoramento P1]
+  BCB[BCB agregado opcional] -. contexto, não target individual .-> EV

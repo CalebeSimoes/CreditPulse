@@ -1,0 +1,5 @@
+-- Aguardando validação da fonte pública, unidade de análise e target.
+-- Criar tabelas tipadas e SQL de canonical/features somente após concluir
+-- docs/PROJECT_EXECUTION_GUIDE.md etapas 1–3. Não gerar features arbitrárias.
+-- Contratos obrigatórios: proveniência, versão, corte temporal e ausência
+-- de variáveis indisponíveis no instante da previsão.
